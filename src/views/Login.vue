@@ -34,14 +34,9 @@
       </div>
     </form>
   </div>
-
-  <ToastMessages></ToastMessages>
 </template>
 
 <script>
-import emitter from '@/methods/emitter';
-import ToastMessages from '@/components/ToastMessages.vue';
-
 export default {
   data() {
     return {
@@ -51,36 +46,17 @@ export default {
       },
     };
   },
-  provide() {
-    return {
-      emitter,
-    };
-  },
-  components: {
-    ToastMessages,
-  },
   methods: {
     signIn() {
       const api = `${process.env.VUE_APP_API}admin/signin`;
       this.isLoading = true;
       this.$http.post(api, this.user).then((res) => {
         this.isLoading = false;
+        console.log('admin/signin', res);
         if (res.data.success) {
           const { token, expired } = res.data;
           document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
-          emitter.emit('push-message', {
-            style: 'success',
-            title: '登入成功',
-          });
-          setTimeout(() => {
-            this.$router.push('/dashboard/products');
-          }, 2000);
-        } else {
-          emitter.emit('push-message', {
-            style: 'danger',
-            title: '登入失敗',
-            content: res.data.message,
-          });
+          this.$router.push('/dashboard/products');
         }
       });
     },

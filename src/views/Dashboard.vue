@@ -21,6 +21,7 @@ export default {
       emitter,
     };
   },
+  inject: ['httpMessageState'],
   created() {
     const token = document.cookie.replace(
       /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
@@ -32,6 +33,8 @@ export default {
     this.isLoading = true;
     this.$http.post(api, this.user).then((res) => {
       this.isLoading = false;
+      this.httpMessageState(res, '登入');
+      console.log('api/user/check', res);
       if (!res.data.success) {
         this.$router.push('/login');
       }
