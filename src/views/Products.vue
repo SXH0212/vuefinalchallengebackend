@@ -112,6 +112,7 @@ export default {
         productComponent.hideModal();
         this.httpMessageState(response, `產品${this.isNew ? '新增' : '編輯'}`);
       });
+      this.getProducts();
     },
     // 開啟刪除 Modal
     openDelProductModal(item) {
