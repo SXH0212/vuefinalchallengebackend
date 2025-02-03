@@ -1,12 +1,6 @@
 <template>
   <div class="text-end">
-    <button
-      class="btn btn-primary"
-      type="button"
-      @click="openModal(true)"
-    >
-      增加產品
-    </button>
+    <button class="btn btn-primary" type="button" @click="openModal(true)">增加產品</button>
   </div>
   <table class="table mt-4">
     <thead>
@@ -31,24 +25,27 @@
         </td>
         <td>
           <div class="btn-group">
-            <button class="btn btn-outline-primary btn-sm"
-            @click="openModal(false, item)">編輯</button>
-            <button class="btn btn-outline-danger btn-sm"
-            @click="openDelProductModal(item)">刪除</button>
+            <button class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">
+              編輯
+            </button>
+            <button class="btn btn-outline-danger btn-sm" @click="openDelProductModal(item)">
+              刪除
+            </button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <Pagination :pages="pagination"
-  @emit-pages="getProducts"></Pagination>
+  <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
 
-  <ProductModal ref="productModal" :product="tempProduct"
-  @update-product="updateProduct"></ProductModal>
+  <ProductModal
+    ref="productModal"
+    :product="tempProduct"
+    @update-product="updateProduct"
+  ></ProductModal>
 
-  <DelModal ref="delModal" :item="tempProduct"
-  @del-item="delProduct"></DelModal>
+  <DelModal ref="delModal" :item="tempProduct" @del-item="delProduct"></DelModal>
 
   <Loading :active="isLoading"></Loading>
 </template>
@@ -82,6 +79,7 @@ export default {
         this.isLoading = false;
         this.products = res.data.products;
         this.pagination = res.data.pagination;
+        console.log('admin/products/', this.products);
       });
     },
     openModal(isNew, item) {
