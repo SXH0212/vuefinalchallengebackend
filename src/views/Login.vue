@@ -27,16 +27,19 @@
           />
         </div>
         <div class="text-end mt-4">
-          <button class="btn btn-lg btn-primary btn-block" type="submit">
-            登入
-          </button>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
         </div>
       </div>
     </form>
   </div>
+
+  <ToastMessages></ToastMessages>
 </template>
 
 <script>
+import ToastMessages from '@/components/ToastMessages.vue';
+import emitter from '@/methods/emitter';
+
 export default {
   data() {
     return {
@@ -46,6 +49,15 @@ export default {
       },
     };
   },
+  components: {
+    ToastMessages,
+  },
+  provide() {
+    return {
+      emitter,
+    };
+  },
+  inject: ['httpMessageState'],
   methods: {
     signIn() {
       const api = `${process.env.VUE_APP_API}admin/signin`;
@@ -53,6 +65,7 @@ export default {
       this.$http.post(api, this.user).then((res) => {
         this.isLoading = false;
         console.log('admin/signin', res);
+        this.httpMessageState(res, '登入');
         if (res.data.success) {
           const { token, expired } = res.data;
           document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;

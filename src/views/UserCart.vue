@@ -89,7 +89,14 @@
                   </td>
                   <td>
                     <div class="input-group input-group-sm">
-                      <input type="number" class="form-control" v-model.number="item.qty" min="1" />
+                      <input
+                        type="number"
+                        class="form-control"
+                        v-model.number="item.qty"
+                        min="1"
+                        :disabled="status.loadingItem === item.id"
+                        @click="updateCart(item)"
+                      />
                       <div class="input-group-text">/ {{ item.product.unit }}</div>
                     </div>
                   </td>
@@ -177,10 +184,23 @@ export default {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.isLoading = true;
       this.$http.get(url).then((response) => {
-        console.log(response);
+        console.log('getCart', response);
         this.cart = response.data.data;
         this.isLoading = false;
       });
+    },
+    updateCart(item) {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`;
+      this.isLoading = true;
+      this.status.loadingItem = item.id;
+      this.$http
+        .put(url, { data: { product_id: item.product_id, qty: item.qty } })
+        .then((response) => {
+          this.isLoading = false;
+          this.httpMessageState(response, '更新購物車');
+          this.status.loadingItem = '';
+          this.getCart();
+        });
     },
   },
   created() {
