@@ -89,7 +89,7 @@
                   </td>
                   <td>
                     <div class="input-group input-group-sm">
-                      <input type="number" class="form-control" v-model.number="item.qty" />
+                      <input type="number" class="form-control" v-model.number="item.qty" min="1" />
                       <div class="input-group-text">/ {{ item.product.unit }}</div>
                     </div>
                   </td>

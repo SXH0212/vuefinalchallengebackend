@@ -20,20 +20,12 @@
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>
         <hr />
 
-        <div class="container">
-          <div class="row col-6">
-            <div class="input-group mb-3">
-              <button type="button" class="input-group-text" @click="qty--">-</button>
-              <input
-                type="text"
-                :value="qty"
-                class="form-control"
-                aria-label="Amount (to the nearest dollar)"
-              />
-              <button type="button" class="input-group-text" @click="qty++">+</button>
-            </div>
+        <div class="row col-4">
+          <div class="input-group input-group-sm">
+            <input type="number" class="form-control" v-model.number="product.qty" min="1" />
           </div>
         </div>
+        <hr />
 
         <button
           type="button"
