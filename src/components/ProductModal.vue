@@ -49,7 +49,7 @@
               </div>
               <img class="img-fluid" alt="" :src="tempProduct.imageUrl" />
               <!-- 延伸技巧，多圖 -->
-              <div class="mt-5" v-if="tempProduct.imageUrl">
+              <div class="mt-5" v-if="tempProduct.imagesUrl">
                 <div
                   v-for="(image, key) in tempProduct.imagesUrl"
                   class="mb-3 input-group"

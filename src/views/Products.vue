@@ -84,9 +84,13 @@ export default {
     },
     openModal(isNew, item) {
       if (isNew) {
-        this.tempProduct = {};
+        this.tempProduct = {
+          imagesUrl: [''],
+        };
       } else {
-        this.tempProduct = { ...item };
+        this.tempProduct = {
+          ...item,
+        };
       }
       this.isNew = isNew;
       const productComponent = this.$refs.productModal;

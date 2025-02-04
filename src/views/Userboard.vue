@@ -6,7 +6,7 @@
   </nav>
   <div class="container-fluid mt-3 position-relative">
     <ToastMessages></ToastMessages>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -18,12 +18,17 @@ export default {
   components: {
     ToastMessages,
   },
+  /** ***********  ✨ Codeium Command ⭐  ************  */
+  /**
+   * Provides the global emitter for child components to use.
+   * @returns {{emitter: *}}
+   */
+  /** ****  518a45d3-7b16-4f3b-8bcb-42e38f7bcd86  ****** */
   provide() {
     return {
       emitter,
     };
   },
-  created() {
-  },
+  created() {},
 };
 </script>
