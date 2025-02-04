@@ -90,6 +90,7 @@ export default {
       } else {
         this.tempProduct = {
           ...item,
+          imagesUrl: item.imagesUrl || [''],
         };
       }
       this.isNew = isNew;
