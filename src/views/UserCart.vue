@@ -202,6 +202,16 @@ export default {
           this.getCart();
         });
     },
+    addCouponCode() {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`;
+      this.isLoading = true;
+      this.$http.post(url, { data: { code: this.coupon_code } }).then((response) => {
+        this.isLoading = false;
+        console.log('/coupon', response);
+        this.httpMessageState(response, '套用優惠券');
+        this.getCart();
+      });
+    },
   },
   created() {
     this.getProducts();
