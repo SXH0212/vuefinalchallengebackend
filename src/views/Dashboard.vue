@@ -7,6 +7,7 @@
 </template>
 <script>
 import emitter from '@/methods/emitter';
+// import 'bootstrap/js/dist/collapse';
 
 import ToastMessages from '@/components/ToastMessages.vue';
 import Navbar from '@/components/Navbar.vue';

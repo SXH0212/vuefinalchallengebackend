@@ -310,10 +310,18 @@ export default {
     createOrder() {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
-      this.$http.post(url, { data: order })
-        .then((res) => {
-          console.log(res);
-        });
+      this.isLoading = true;
+      this.$http.post(url, { data: order }).then((res) => {
+        console.log(res);
+        this.httpMessageState(res, '建立訂單');
+        // 取得返回的 orderId
+        const { orderId } = res.data;
+        // 建構跳轉的路由路徑
+        const checkoutRoute = { name: 'checkout', params: { orderId } };
+        this.isLoading = false;
+        // 去checkout 路由
+        this.$router.push(checkoutRoute);
+      });
     },
   },
   created() {

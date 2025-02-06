@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import 'bootstrap/js/dist/collapse';
+
 export default {
   methods: {
     logout() {

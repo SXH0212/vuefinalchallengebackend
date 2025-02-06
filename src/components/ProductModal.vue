@@ -197,7 +197,6 @@
 </template>
 
 <script>
-// import Modal from 'bootstrap/js/dist/modal';
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
