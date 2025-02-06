@@ -92,7 +92,7 @@ export default {
       due_date: '',
     };
   },
-  emits: ['update-coupon'],
+  // emits: ['update-coupon'],
   watch: {
     coupon() {
       this.tempCoupon = this.coupon;
