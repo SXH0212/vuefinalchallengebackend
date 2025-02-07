@@ -23,9 +23,8 @@ app.config.globalProperties.$filters = {
 
 // 過濾掉 'all' 規則，並註冊其他規則
 Object.keys(AllRules).forEach((rule) => {
-  if (rule !== 'all') {
-    defineRule(rule, AllRules[rule]);
-  }
+  console.log(rule);
+  defineRule(rule, AllRules[rule]);
 });
 
 configure({
