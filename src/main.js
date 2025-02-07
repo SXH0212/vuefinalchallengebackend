@@ -9,7 +9,7 @@ import httpMessageState from '@/methods/pushMessageState';
 import {
   Form, Field, ErrorMessage, defineRule, configure,
 } from 'vee-validate';
-import * as AllRules from '@vee-validate/rules';
+import { all } from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 
@@ -22,9 +22,9 @@ app.config.globalProperties.$filters = {
 };
 
 // 過濾掉 'all' 規則，並註冊其他規則
-Object.keys(AllRules).forEach((rule) => {
+Object.keys(all).forEach((rule) => {
   console.log(rule);
-  defineRule(rule, AllRules[rule]);
+  defineRule(rule, all[rule]);
 });
 
 configure({
