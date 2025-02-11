@@ -106,5 +106,6 @@ export default {
     },
   },
   mixins: [modalMixin],
+  emits: ['update-coupon'],
 };
 </script>

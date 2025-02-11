@@ -237,5 +237,6 @@ export default {
     },
   },
   mixins: [modalMixin],
+  emits: ['update-product'],
 };
 </script>

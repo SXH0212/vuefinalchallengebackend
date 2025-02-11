@@ -144,5 +144,6 @@ export default {
       this.isPaid = this.tempOrder.is_paid;
     },
   },
+  emits: ['update-order'],
 };
 </script>

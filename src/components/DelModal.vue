@@ -38,5 +38,6 @@ export default {
     };
   },
   mixins: [modalMixin],
+  emits: ['del-item'],
 };
 </script>
