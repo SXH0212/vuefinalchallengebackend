@@ -135,15 +135,13 @@ export default {
       isPaid: false,
     };
   },
-  // emits: ['update-product'],
+  emits: ['update-product'],
   mixins: [modalMixin],
-  // inject: ['emitter'],
   watch: {
     order() {
       this.tempOrder = this.order;
       this.isPaid = this.tempOrder.is_paid;
     },
   },
-  emits: ['update-order'],
 };
 </script>

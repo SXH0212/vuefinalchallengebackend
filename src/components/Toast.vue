@@ -15,9 +15,7 @@ import Toast from 'bootstrap/js/dist/toast';
 
 export default {
   name: 'Toast',
-  props: [
-    'msg',
-  ],
+  props: ['msg'],
   mounted() {
     const toastEl = this.$refs.toast;
     const toast = new Toast(toastEl, {
